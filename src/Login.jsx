@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // axiosをインポート
 import './Signup.scss'; // スタイルを再利用
-import Footer from './Footer'; // フッターをインポート
 
 function Login() {
   const navigate = useNavigate(); // ページ遷移を管理

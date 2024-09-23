@@ -41,7 +41,7 @@ function Hint() {
 
   useEffect(() => {
     fetchAdvice(); // 初回ロード時にAPIリクエストを実行
-  }, [user_id]);
+  });
 
   const goToFeedback = () => {
     navigate('/feedback'); // フィードバック画面に遷移

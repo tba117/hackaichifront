@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom'; // useLocation を追加
+import { useLocation } from 'react-router-dom'; // useLocation を追加
 import axios from 'axios'; // axiosをインポート
 import './BMProfile.scss'; // スタイルをインポート
 
 function BMProfile() {
   const [username, setUsername] = useState('');
-  const [userId, setUserId] = useState('');
   const [department, setDepartment] = useState('');
   const [self_introduction, setSelfIntroduction] = useState('');
   const [discord, setDiscord] = useState('');
@@ -13,7 +12,7 @@ function BMProfile() {
   const [skils, setSkills] = useState([]);
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation(); // ルートから state を取得
   const { user_id } = location.state || {}; // 渡された user_id を取得
 
@@ -33,7 +32,6 @@ function BMProfile() {
           const userData = response.data.user;
 
           setUsername(userData.username);
-          setUserId(userData.user_id);
           setDepartment(userData.department);
           setDiscord(userData.snsid); // Discord情報をセット
           setHobbies(userData.hobbys);
@@ -50,15 +48,6 @@ function BMProfile() {
 
     fetchUserData();
   }, [user_id]); // user_id の変更時にデータを再取得
-
-  const handleLogout = () => {
-    alert('ログアウトしました。');
-    navigate('/');
-  };
-
-  const handleEditProfile = () => {
-    navigate('/profile-setup'); // プロフィール設定画面に正しく遷移
-  };
 
   if (error) {
     return <div>{error}</div>;

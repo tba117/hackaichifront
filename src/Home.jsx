@@ -47,11 +47,6 @@ function Home() {
     fetchUserData();
   }, []);
 
-  const handleLogout = () => {
-    alert('ログアウトしました。');
-    navigate('/');
-  };
-
   const handleEditProfile = () => {
     navigate('/profile-setup'); // プロフィール設定画面に正しく遷移
   };
