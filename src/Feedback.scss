@@ -1,0 +1,74 @@
+/* フィードバックページ全体のスタイル */
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #adedff 0%, #c5ffcb 100%); /* 新しい背景グラデーション */
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  
+
+/* タイトル部分 */
+.feedback-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+/* サブタイトル部分 */
+.feedback-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 500px;
+}
+
+/* フィードバック入力ボックス */
+.feedback-box {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.feedback-label {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* テキストエリアのスタイル */
+.feedback-input {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+
+/* ボタンのスタイル */
+.feedback-button {
+  background-color: #626262;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.feedback-button:hover {
+  background-color: #777;
+}
