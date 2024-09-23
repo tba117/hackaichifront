@@ -1,0 +1,131 @@
+.matched-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f8ff, #ffe4e1); /* 柔らかなグラデーション背景 */
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1d3557; /* 深いブルー */
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 18px;
+    color: #457b9d; /* 中間ブルー */
+    margin-bottom: 30px;
+    line-height: 1.5;
+    max-width: 600px;
+    text-align: center;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.icon-placeholder {
+    font-size: 60px;
+    color: #e63946; /* 鮮やかなレッド */
+    margin-bottom: 15px;
+}
+
+.profile-details {
+    text-align: center;
+}
+
+.profile-details h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1d3557;
+    margin-bottom: 10px;
+}
+
+.profile-details p {
+    font-size: 16px;
+    color: #457b9d;
+    margin: 0;
+}
+
+.profile-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #e63946; /* 鮮やかなレッド */
+    margin-bottom: 10px;
+}
+
+.details {
+    font-size: 16px;
+    color: #457b9d;
+}
+
+.hint-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.hint-text {
+    font-size: 16px;
+    color: #457b9d;
+    margin-bottom: 10px;
+}
+
+.hint-button {
+    background-color: #f4a261; /* オレンジ */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(244, 162, 97, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hint-button:hover {
+    background-color: #e76f51; /* 少し濃いオレンジ */
+    transform: translateY(-5px);
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-details h2 {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .details {
+        font-size: 14px;
+    }
+
+    .hint-button {
+        padding: 10px 20px;
+    }
+}

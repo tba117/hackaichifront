@@ -1,0 +1,132 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 要素を上に揃える */
+    padding: 10px; /* パディングを少なく */
+    background: linear-gradient(135deg, #f0f9ff, #e0f7fa); /* 色を少し明るく、柔らかく */
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* ユーザーIDと名前の表示スタイル */
+  .user-header {
+    text-align: center;
+    margin-top: 10px; /* 少し余白を追加 */
+    margin-bottom: 20px;
+  }
+  
+  .user-id {
+    font-size: 18px;  /* IDのフォントサイズ */
+    color: #666;  /* 少し薄いグレーで表示 */
+    margin-bottom: 5px;  /* IDと名前の間隔 */
+  }
+  
+  .user-name {
+    font-size: 36px;  /* 名前のフォントサイズ */
+    font-weight: 700;
+    color: #333;  /* ダークグレー */
+    letter-spacing: 1px; /* 少し文字の間隔を広げる */
+  }
+  
+  .user-info-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    text-align: left;
+    transition: all 0.3s ease; /* マウスホバー時に動きを付ける */
+  }
+
+  .user-info-card:hover {
+    transform: translateY(-5px); /* ホバー時に少し持ち上がる */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* シャドウを強調 */
+  }
+  
+  .user-info-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 2px solid #26a69a; /* タイトルの下にボーダー */
+    padding-bottom: 5px;
+  }
+  
+  .user-info-card p {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    z-index: 1000;
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-item:hover {
+    color: #26a69a; /* アイテムをホバーしたときの色 */
+  }
+  
+  .nav-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease; /* ホバー時のアニメーション */
+  }
+
+  .nav-icon:hover {
+    transform: scale(1.1); /* アイコンをホバーしたときに少し拡大 */
+  }
+  
+  .logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logout-button:hover {
+    color: #e57373; /* ログアウト時の色 */
+  }
+  
+  @media (max-width: 768px) {
+    .user-info-card {
+      max-width: 90%;
+      padding: 15px;
+    }
+  
+    .user-name {
+      font-size: 28px;
+    }
+  
+    .nav-icon {
+      font-size: 20px;
+    }
+  }
