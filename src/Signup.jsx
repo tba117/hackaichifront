@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // axiosをインポート
 import './Signup.scss'; // スタイルをインポート
-import Footer from './Footer'; // フッターをインポート
 
 function Signup() {
   const navigate = useNavigate(); // useNavigateフックでページ遷移を管理
@@ -55,18 +54,18 @@ function Signup() {
   };
 
   return (
-    <div className="signup-container">
-      <h1 className="title">アカウント作成</h1>
-      <div className="signup-box">
-        <h2 className="signup-header">Create Your Account</h2>
-        <form className="signup-form" onSubmit={handleSignup}>
+    <div className="auth-page">
+      <h1 className="auth-page__title">Biz Mate</h1>
+      <div className="auth-page__box">
+        <h2 className="auth-page__header">アカウント作成</h2>
+        <form className="auth-page__form" onSubmit={handleSignup}>
         <input
             type="text"
             name="name"
             placeholder="your name"
             value={formData.name}
             onChange={handleChange}
-            className="input-field"
+            className="auth-page__input"
             required
           />
           <input
@@ -75,7 +74,7 @@ function Signup() {
             placeholder="user ID"
             value={formData.userId}
             onChange={handleChange}
-            className="input-field"
+            className="auth-page__input"
             required
           />
           <input
@@ -84,17 +83,16 @@ function Signup() {
             placeholder="password"
             value={formData.password}
             onChange={handleChange}
-            className="input-field"
+            className="auth-page__input"
             required
           />
           {error && <p className="error-message">{error}</p>}
-          <button className="signup-button" type="submit">create</button>
+          <button className="auth-page__button" type="submit">create</button>
         </form>
-        <p className="login-link">
-          Already have an account? <span onClick={goToLogin} className="login-text">Login here</span>
+        <p className="auth-page__link">
+          Already have an account? <span onClick={goToLogin} className="auth-page__link-text">Login here</span>
         </p>
       </div>
-      <Footer /> {/* フッターを追加 */}
     </div>
   );
 }

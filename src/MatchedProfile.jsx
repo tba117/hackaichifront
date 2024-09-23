@@ -39,6 +39,10 @@ function MatchedProfile() {
           hobbies: userData.hobbys,
           skills: userData.skils,
         });
+
+        // マッチングした相手の情報をローカルストレージに保存
+        localStorage.setItem('matchedUser', JSON.stringify(userData));
+        
         setLoading(false);
       } catch (error) {
         console.error('マッチングユーザーの取得に失敗しました:', error);

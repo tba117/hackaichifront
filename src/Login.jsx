@@ -52,18 +52,18 @@ function Login() {
   };
 
   return (
-    <div className="signup-container"> {/* CSSをSignupと共有 */}
-      <h1 className="title">ログイン</h1>
-      <div className="signup-box">
-        <h2 className="signup-header">Sign In</h2>
-        <form className="signup-form" onSubmit={handleLogin}>
+    <div className="auth-page"> {/* CSSをSignupと共有 */}
+      <h1 className="auth-page__title">Biz Mate</h1>
+      <div className="auth-page__box">
+        <h2 className="auth-page__header">ログイン</h2>
+        <form className="auth-page__form" onSubmit={handleLogin}>
         <input
             type="text"
             name="userId"
             placeholder="user ID"
             value={formData.userId}
             onChange={handleChange}
-            className="input-field"
+            className="auth-page__input"
             required
           />
           <input
@@ -72,14 +72,13 @@ function Login() {
             placeholder="password"
             value={formData.password}
             onChange={handleChange}
-            className="input-field"
+            className="auth-page__input"
             required
           />
           {error && <p className="error-message">{error}</p>}
-          <button className="signup-button" type="submit" onClick={handleLogin}>Login</button> {/* ログイン処理 */}
+          <button className="auth-page__button" type="submit" onClick={handleLogin}>Login</button> {/* ログイン処理 */}
         </form>
       </div>
-      <Footer /> {/* フッターを追加 */}
     </div>
   );
 }

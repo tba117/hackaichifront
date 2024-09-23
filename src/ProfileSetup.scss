@@ -1,136 +1,129 @@
-.profile-setup-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #edf2fb, #e3f6f5); /* 柔らかいグラデーション */
-    padding: 20px;
-    font-family: 'Poppins', sans-serif; /* おしゃれなフォントに変更 */
-  }
-  
-  .title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #2a2a2a; /* 少し濃いめのダークカラー */
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 14px;
-    margin-top: 5px;
-    border-radius: 12px; /* 丸みをさらに強調 */
-    border: 1px solid #ddd;
-    font-size: 16px;
-    background-color: #fafafa; /* 柔らかい背景色 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* 優しいシャドウで立体感 */
-    transition: all 0.3s ease;
+.profile-setup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e1f5fe, #fce4ec); /* 柔らかい背景グラデーション */
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 100px; /* ページの下に余白を追加 */
+}
+
+.profile-setup-page__title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-setup-page__input-group {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.profile-setup-page__input-group label {
+  display: block;
+  font-size: 16px;
+  color: #34495e;
+  margin-bottom: 5px;
+}
+
+.profile-setup-page__input-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+textarea {
+  width: 104%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.profile-setup-page__section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.profile-setup-page__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.profile-setup-page__tag {
+  padding: 10px 15px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-setup-page__tag.selected {
+  background-color: #a5d6a7; /* 選択時の色 */
+}
+
+.profile-setup-page__tag:hover {
+  background-color: #e0f7fa;
+}
+
+.profile-setup-page__button-container {
+  margin-top: 30px;
+}
+
+.profile-setup-page__button {
+  background-color: #26a69a;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.profile-setup-page__button:hover {
+  background-color: #2bbbad;
+  transform: translateY(-3px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .profile-setup-page__title {
+    font-size: 28px;
   }
 
-  textarea {
-    width: 100%;
-    padding: 14px;
-    margin-top: 5px;
-    border-radius: 12px; /* 丸みをさらに強調 */
-    border: 1px solid #ddd;
+  .profile-setup-page__input-group input {
+    font-size: 14px;
+  }
+
+  .profile-setup-page__button {
+    padding: 10px 25px;
     font-size: 16px;
-    background-color: #fafafa; /* 柔らかい背景色 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* 優しいシャドウで立体感 */
-    transition: all 0.3s ease;
   }
-  
-  input:focus {
-    outline: none;
-    border-color: #00bfa6;
-    box-shadow: 0 4px 12px rgba(0, 191, 166, 0.2); /* フォーカス時に強調 */
-  }
-  
-  .section {
-    margin-bottom: 25px;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  h2 {
+}
+
+@media (max-width: 480px) {
+  .profile-setup-page__title {
     font-size: 24px;
-    margin-bottom: 10px;
-    color: #2a2a2a; /* タイトルの色を濃くして強調 */
   }
-  
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px; /* タグの間隔を広げる */
+
+  .profile-setup-page__input-group input {
+    font-size: 12px;
   }
-  
-  .tag {
-    padding: 12px;
-    background-color: #f1f3f4;
-    border-radius: 20px;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
+
+  .profile-setup-page__button {
+    padding: 8px 20px;
+    font-size: 14px;
   }
-  
-  .tag.selected {
-    background-color: #00bfa6; /* 選択したときの色を強調 */
-    color: white;
-  }
-  
-  .tag:hover {
-    background-color: #dfe4ea;
-    transform: translateY(-2px); /* ホバー時に持ち上がる効果 */
-  }
-  
-  .create-profile-button-container {
-    margin-top: 30px;
-    text-align: center;
-  }
-  
-  .create-profile-button {
-    background: linear-gradient(90deg, #00bfa6 0%, #2ed573 100%);
-    color: white;
-    padding: 14px 32px 15px;
-    margin-bottom: 100px;
-    border: none;
-    border-radius: 25px; /* ボタンに丸みを強調 */
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  
-  .create-profile-button:hover {
-    background: linear-gradient(90deg, #2ed573 0%, #00bfa6 100%);
-    transform: translateY(-3px); /* ホバー時に持ち上げる */
-  }
-  
-  @media (max-width: 600px) {
-    .title {
-      font-size: 24px;
-    }
-  
-    .input-group,
-    .section {
-      max-width: 100%;
-    }
-  
-    .tag {
-      padding: 10px;
-    }
-  
-    .create-profile-button {
-      padding: 12px 24px;
-      font-size: 16px;
-    }
-  }
-  
+}

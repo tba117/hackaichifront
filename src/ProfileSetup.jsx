@@ -59,9 +59,9 @@ function ProfileSetup() {
   };
 
   return (
-    <div className="profile-setup-container">
-      <h1 className="title">プロフィール設定</h1> {/* タイトルを「プロフィール設定」に変更 */}
-      <div className="input-group">
+    <div className="profile-setup-page">
+      <h1 className="profile-setup-page__title">プロフィール設定</h1> {/* タイトルを「プロフィール設定」に変更 */}
+      <div className="profile-setup-page__input-group">
         <label>ユーザー名</label>
         <input
           type="text"
@@ -70,7 +70,7 @@ function ProfileSetup() {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div className="input-group">
+      <div className="profile-setup-page__input-group">
         <label>所属部署</label>
         <input
           type="text"
@@ -79,7 +79,7 @@ function ProfileSetup() {
           onChange={(e) => setDepartment(e.target.value)}
         />
       </div>
-      <div className="input-group">
+      <div className="profile-setup-page__input-group">
         <label>discord</label>
         <input
           type="text"
@@ -89,7 +89,7 @@ function ProfileSetup() {
         />
       </div>
 
-      <div className="input-group">
+      <div className="profile-setup-page__input-group">
         <label>自己紹介</label>
         <textarea
           placeholder="自己紹介を入力"
@@ -98,13 +98,13 @@ function ProfileSetup() {
         />
       </div>
 
-      <div className="section">
+      <div className="profile-setup-page__section">
         <h2>趣味</h2>
-        <div className="tags">
+        <div className="profile-setup-page__tags">
           {hobbies.map(hobby => (
             <div
               key={hobby}
-              className={`tag ${selectedHobbies.includes(hobby) ? 'selected' : ''}`}
+              className={`profile-setup-page__tag ${selectedHobbies.includes(hobby) ? 'selected' : ''}`}
               onClick={() => toggleSelection(hobby, setSelectedHobbies, selectedHobbies)}
             >
               {hobby}
@@ -113,13 +113,13 @@ function ProfileSetup() {
         </div>
       </div>
 
-      <div className="section">
+      <div className="profile-setup-page__section">
         <h2>スキル</h2>
-        <div className="tags">
+        <div className="profile-setup-page__tags">
           {skills.map(skill => (
             <div
               key={skill}
-              className={`tag ${selectedSkills.includes(skill) ? 'selected' : ''}`}
+              className={`profile-setup-page__tag ${selectedSkills.includes(skill) ? 'selected' : ''}`}
               onClick={() => toggleSelection(skill, setSelectedSkills, selectedSkills)}
             >
               {skill}
@@ -129,8 +129,8 @@ function ProfileSetup() {
       </div>
 
       {/* プロフィール保存ボタン */}
-      <div className="create-profile-button-container">
-        <button className="create-profile-button" onClick={handleProfileSave}>
+      <div className="profile-setup-page__button-container">
+        <button className="profile-setup-page__button" onClick={handleProfileSave}>
           保存する
         </button>
       </div>

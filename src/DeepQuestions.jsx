@@ -67,8 +67,8 @@ function DeepQuestions() {
   
 
   return (
-    <div className="deep-questions-container">
-      <h1 className="title">あなたのことをさらに詳しく教えてください</h1>
+    <div className="deep-questions-page">
+      <h1 className="deep-questions-page__title">あなたのことをさらに詳しく教えてください</h1>
       
       {loading && (
         <div className="spinner-container">
@@ -80,10 +80,10 @@ function DeepQuestions() {
       {error && <p className="error-message">{error}</p>}
 
       {!loading && questions.map((question, index) => (
-        <div className="question-box" key={index}>
-          <label>{question}</label>
+        <div className="deep-questions-page__box" key={index}>
+          <label className="deep-questions-page__label">{question}</label>
           <textarea
-            className="answer-field"
+            className="deep-questions-page__input"
             placeholder="あなたの回答"
             onChange={(e) => handleAnswerChange(index, e.target.value)} // 回答を保存
           ></textarea>
@@ -100,7 +100,7 @@ function DeepQuestions() {
 
       {/* ローディング中でないときに表示 */}
       {!loading && !saving && (
-        <button className="save-button" onClick={handleSaveAnswers}>
+        <button className="deep-questions-page__button" onClick={handleSaveAnswers}>
           回答を保存
         </button>
       )}
