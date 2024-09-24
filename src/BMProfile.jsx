@@ -54,15 +54,38 @@ function BMProfile() {
   }
 
   return (
-    <div className="profile-advice-container">
-      <h1>{username}さんのプロフィール</h1>
-      <p>所属: {department}</p>
-      <p>Discord: {discord}</p>
-      <p>趣味：{hobbies}</p>
-      <p>スキル：{skils}</p>
-      <p>自己紹介：{self_introduction}</p>
-      <h2>会話のアドバイス</h2>
-      <div className="advice-text">
+    <div className="bm-profile">
+      <h1 className="bm-profile__title">{username}さんのプロフィール</h1>
+      <p className="bm-profile__department">所属: {department}</p>
+      <p className="bm-profile__discord">Discord: {discord}</p>
+      <p className="bm-profile__department">自己紹介：{self_introduction}</p>
+      
+      {/* 趣味を表示 */}
+      {hobbies.length > 0 && (
+        <div className="bm-profile__hobbies">
+          <h2 className="bm-profile__subtitle">趣味</h2>
+          <ul className="bm-profile__list">
+            {hobbies.map((hobby, index) => (
+              <li key={index} className="bm-profile__list-item">{hobby}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* スキルを表示 */}
+      {skils.length > 0 && (
+        <div className="bm-profile__skills">
+          <h2 className="bm-profile__subtitle">スキル</h2>
+          <ul className="bm-profile__list">
+            {skils.map((skill, index) => (
+              <li key={index} className="bm-profile__list-item">{skill}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <h2 className="bm-profile__advice-title">会話のアドバイス</h2>
+      <div className="bm-profile__advice-text">
         この相手との会話を進める際には、興味のあるトピックに焦点を当てましょう。
         <br />
         例えば、技術の話や趣味について質問してみるのがおすすめです。

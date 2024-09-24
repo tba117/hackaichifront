@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Hint.scss';
-import Footer from './Footer'; // フッターをインポート
+import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // axiosをインポート
+import axios from 'axios';
 
 function Hint() {
   const [hints, setHints] = useState([]);
@@ -15,21 +15,21 @@ function Hint() {
 
   const navigate = useNavigate();
 
-  // アドバイスを生成するAPIリクエストを行う
-  const fetchAdvice = async () => {
+  // アドバイスを取得する関数をuseCallbackでラップ
+  const fetchAdvice = useCallback(async () => {
     try {
-      setLoading(true); // 再読み込み時にローディングを表示
-      const token = localStorage.getItem('token'); // ログインユーザーのトークンを取得
+      console.log('取得開始');
+      setLoading(true);
+      const token = localStorage.getItem('token');
       const response = await axios.get(
-        `https://aichihack-back-153bffff1dd9.herokuapp.com/app/generate-advice/${user_id}/`,
+        `https://aichihack-back-153bffff1dd9.herokuapp.com/app/get-advice/${user_id}/`,
         {
           headers: {
-            Authorization: `Token ${token}`,
+            "Authorization": `Token ${token}`,
           },
         }
       );
-
-      // ヒントを取得してステートに保存
+      console.log(response.data.advice);
       setHints(response.data.advice.split('\n'));
       setLoading(false);
     } catch (error) {
@@ -37,19 +37,36 @@ function Hint() {
       setError('アドバイスの取得に失敗しました。再度お試しください。');
       setLoading(false);
     }
-  };
+  }, [user_id]);
+
+  // アドバイス生成を開始する関数をuseCallbackでラップ
+  const generateAdvice = useCallback(async () => {
+    try {
+      console.log("生成開始");
+      const token = localStorage.getItem('token');
+      await axios.get(
+        `https://aichihack-back-153bffff1dd9.herokuapp.com/app/generate-advice/${user_id}/`,
+        {
+          headers: {
+            "Authorization": `Token ${token}`,
+          },
+        }
+      );
+      console.log("生成成功");
+      fetchAdvice();  // 生成後にアドバイスを取得する
+    } catch (error) {
+      console.error('アドバイス生成に失敗しました:', error);
+      setError('アドバイス生成に失敗しました。再度お試しください。');
+      setLoading(false);
+    }
+  }, [user_id, fetchAdvice]);  // fetchAdviceを依存関係として追加
 
   useEffect(() => {
-    fetchAdvice(); // 初回ロード時にAPIリクエストを実行
-  });
+    generateAdvice();
+  }, [generateAdvice]);  // generateAdviceを依存関係として追加
 
   const goToFeedback = () => {
-    navigate('/feedback'); // フィードバック画面に遷移
-  };
-
-  const reloadAdvice = () => {
-    setError(null); // エラーをリセット
-    fetchAdvice(); // 再度アドバイスを取得
+    navigate('/feedback');
   };
 
   return (
@@ -63,30 +80,24 @@ function Hint() {
       {loading && (
         <div className="loading">
           <p>アドバイスを取得中...</p>
-          <div className="spinner"></div> {/* ローディングスピナーを表示 */}
+          <div className="spinner"></div>
         </div>
       )}
 
       {error && (
         <div className="error-message">
           <p>{error}</p>
-          <button className="retry-button" onClick={reloadAdvice}>
-            再試行
-          </button> {/* 再試行ボタン */}
+          <button onClick={generateAdvice}>再試行</button>
         </div>
       )}
 
-      {!loading && !error && (
+      {!loading && !error && hints.length > 0 && (
         <div className="hint-page__hint-list">
-          {hints.length > 0 ? (
-            hints.map((hint, index) => (
-              <div key={index} className="hint-page__hint-item">
-                <p>{index + 1}. {hint}</p>
-              </div>
-            ))
-          ) : (
-            <p>ヒントがありません。</p>
-          )}
+          {hints.map((hint, index) => (
+            <div key={index} className="hint-page__hint-item">
+              <p>{hint}</p>
+            </div>
+          ))}
         </div>
       )}
 
@@ -94,7 +105,7 @@ function Hint() {
         相手の印象を記録する
       </button>
 
-      <Footer /> {/* フッターを追加 */}
+      <Footer />
     </div>
   );
 }

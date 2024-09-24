@@ -1,52 +1,124 @@
-.profile-advice-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* 上部にコンテンツを揃える */
-    padding: 20px; /* 上部の余白を減らす */
-    background: linear-gradient(135deg, #f0f7fd 0%, #e8f5e9 100%);
-    min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    padding-bottom: 3cm; /* フッターとの間に余白を作成 */
+.bm-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f8ff, #ffe4e1); /* 背景グラデーション */
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+  padding-bottom: 100px; /* ページの一番下に余白を追加 */
+}
+
+.bm-profile__title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1d3557; /* タイトルカラー */
+  margin-bottom: 20px;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); /* タイトルに軽いシャドウを追加 */
+}
+
+.bm-profile__department, .bm-profile__discord {
+  font-size: 18px;
+  color: #457b9d;
+  margin-bottom: 10px;
+}
+
+.bm-profile__hobbies, .bm-profile__skills {
+  margin-bottom: 30px;
+}
+
+.bm-profile__subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #1abc9c; /* サブタイトルの下にボーダーを追加 */
+  padding-bottom: 5px; /* ボーダーとの間に少し余白 */
+}
+
+.bm-profile__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* 横並びにし、折り返しを許可 */
+}
+
+.bm-profile__list-item {
+  font-size: 18px;
+  color: #34495e;
+  margin: 8px; /* 各リストアイテムの間にスペースを追加 */
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* 軽いシャドウを追加 */
+}
+
+.bm-profile__advice-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1abc9c;
+  margin-bottom: 10px;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); /* タイトルに軽いシャドウ */
+}
+
+.bm-profile__advice-text {
+  font-size: 16px;
+  color: #7f8c8d;
+  max-width: 600px;
+  text-align: center;
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 立体感のあるシャドウを追加 */
+  border: 1px solid #dfe6e9; /* ボーダーを追加 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .bm-profile__title {
+    font-size: 30px;
   }
-  
-  h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* 上部余白を最小限に */
+
+  .bm-profile__department, .bm-profile__discord {
+    font-size: 16px;
   }
-  
-  p {
+
+  .bm-profile__subtitle {
+    font-size: 20px;
+  }
+
+  .bm-profile__advice-title {
+    font-size: 20px;
+  }
+
+  .bm-profile__advice-text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bm-profile__title {
+    font-size: 24px;
+  }
+
+  .bm-profile__department, .bm-profile__discord {
+    font-size: 14px;
+  }
+
+  .bm-profile__subtitle {
     font-size: 18px;
-    color: #34495e;
-    margin-bottom: 10px;
   }
-  
-  h2 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #1abc9c;
-    margin-top: 20px; /* 上部余白を減らす */
-    margin-bottom: 15px;
-  }
-  
-  .advice-text {
+
+  .bm-profile__advice-title {
     font-size: 18px;
-    line-height: 1.6;
-    color: #7f8c8d;
-    max-width: 600px;
-    text-align: center;
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  /* フッターとの間に余白を追加 */
-  .profile-advice-container {
-    padding-bottom: 3cm; /* フッターとの間に余白を作成 */
+
+  .bm-profile__advice-text {
+    font-size: 12px;
+    padding: 15px;
   }
-  
+}
