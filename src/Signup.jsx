@@ -62,7 +62,7 @@ function Signup() {
         <input
             type="text"
             name="name"
-            placeholder="your name"
+            placeholder="ニックネーム"
             value={formData.name}
             onChange={handleChange}
             className="auth-page__input"
@@ -71,7 +71,7 @@ function Signup() {
           <input
             type="text"
             name="userId"
-            placeholder="user ID"
+            placeholder="ユーザ ID"
             value={formData.userId}
             onChange={handleChange}
             className="auth-page__input"
@@ -80,17 +80,17 @@ function Signup() {
           <input
             type="password"
             name="password"
-            placeholder="password"
+            placeholder="パスワード"
             value={formData.password}
             onChange={handleChange}
             className="auth-page__input"
             required
           />
           {error && <p className="error-message">{error}</p>}
-          <button className="auth-page__button" type="submit">create</button>
+          <button className="auth-page__button" type="submit">登録</button>
         </form>
         <p className="auth-page__link">
-          Already have an account? <span onClick={goToLogin} className="auth-page__link-text">Login here</span>
+          すでにアカウントを持っていますか？ <span onClick={goToLogin} className="auth-page__link-text">ログインはこちら</span>
         </p>
       </div>
     </div>

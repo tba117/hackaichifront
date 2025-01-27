@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Feedback.scss'; // スタイルシートをインポート
-import Footer from './Footer'; // フッターをインポート
 import axios from 'axios'; // axiosをインポート
 
 function Feedback() {
@@ -51,6 +50,7 @@ function Feedback() {
       );
 
       console.log('プロフィール更新成功:', response.data);
+      alert('入力したフィードバックを元に，プロフィールの更新を完了しました')
       setFeedback(''); // フィードバックをクリア
     } catch (error) {
       console.error('プロフィール更新に失敗しました:', error);
@@ -88,8 +88,6 @@ function Feedback() {
       <button className="feedback-page__button" onClick={handleSaveFeedback} disabled={loading}>
         {loading ? '記録中...' : '記録する'}
       </button>
-
-      <Footer /> {/* フッターを追加 */}
     </div>
   );
 }

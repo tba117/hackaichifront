@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate  } from 'react-router-dom';
 import axios from 'axios';
 import './BMProfile.scss';
 
@@ -14,6 +14,8 @@ function BMProfile() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  
+  const navigate = useNavigate();
   const location = useLocation();
   const { user_id } = location.state || {};
 
@@ -75,8 +77,33 @@ function BMProfile() {
     fetchAdvice(); // 初回ロード時にアドバイスも取得
   }, [fetchUserData, fetchAdvice]);
 
+  const handleButtonClick = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        'https://aichihack-back-153bffff1dd9.herokuapp.com/app/chat/create/',
+        { user_id },  // マッチング相手のuser_id
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      const chatRoom = response.data.chat_room;
+      navigate('/chatroom', { state: { chatRoom } }); // 作成されたチャットルーム情報を渡してチャット画面に遷移
+    } catch (error) {
+      console.error('チャットルームの作成に失敗しました:', error);
+      setError('チャットルームの作成に失敗しました。再度お試しください。');
+    }
+  };
+
   if (error) {
-    return <div>{error}</div>;
+    return( 
+    <div className="bm-profile">
+      {error}
+    </div>
+    )
   }
 
   return (
@@ -84,6 +111,7 @@ function BMProfile() {
       <h1 className="bm-profile__title">{username}さんのプロフィール</h1>
       <p className="bm-profile__department">所属: {department}</p>
       <p className="bm-profile__discord">Discord: {discord}</p>
+      <button className="chat-button" onClick={handleButtonClick}>話す</button>
       <p className="bm-profile__self-introduction">自己紹介: {selfIntroduction}</p>
 
       {/* 趣味を表示 */}

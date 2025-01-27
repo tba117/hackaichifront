@@ -23,7 +23,7 @@
 .bm-profile__department, .bm-profile__discord {
   font-size: 18px;
   color: #457b9d;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .bm-profile__hobbies, .bm-profile__skills {
@@ -76,6 +76,22 @@
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 立体感のあるシャドウを追加 */
   border: 1px solid #dfe6e9; /* ボーダーを追加 */
+}
+
+.chat-button {
+  background-color: #26a69a;
+  color: white;
+  padding: 8px 40px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.chat-button:hover {
+  background-color: #2bbbad;
+  transform: translateY(-3px);
 }
 
 /* レスポンシブ対応 */

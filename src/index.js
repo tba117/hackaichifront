@@ -13,6 +13,11 @@ import Feedback from './Feedback.jsx';
 import MatchedList from './MatchedList.jsx';
 import BMProfile from './BMProfile.jsx';
 import Footer from './Footer';
+import Chatlist from './Chatlist.jsx'
+import Chatroom from './Chatroom.jsx'
+import AuthGuard from './AutoGuard.js';
+
+import { UserProvider } from './UserContext'; // UserProvider をインポート
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,7 +29,7 @@ const hintsData = [
   "データ解析やクラウドコンピューティングについても興味がありそうです。"
 ];
 
-// Footerを条件付きで表示
+
 function App() {
   const location = useLocation();
   const noFooterRoutes = ['/signup', '/login', '/']; // signup と login のページでフッターを非表示にする
@@ -34,12 +39,66 @@ function App() {
       <Routes>
         <Route path="/" element={<Signup />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/profile-setup" element={<ProfileSetup />} />
-        <Route path="/deep-questions" element={<DeepQuestions />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/matched-profile" element={<MatchedProfile name="山田太郎" department="技術部" discord="yamada#1234" hobbies={["音楽", "映画鑑賞"]} skills={["プログラミング", "データ解析"]} />} />
-        <Route path="/hint" element={<Hint hints={hintsData} name="山田太郎" department="技術部" discord="yamada#1234" />} />
         <Route path="/login" element={<Login />} />
+
+        {/* 保護されたルート */}
+        <Route
+          path="/profile-setup"
+          element={
+            <AuthGuard>
+              <ProfileSetup />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/deep-questions"
+          element={
+            <AuthGuard>
+              <DeepQuestions />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <AuthGuard>
+              <Home />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/matched-profile"
+          element={
+            <AuthGuard>
+              <MatchedProfile />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/hint"
+          element={
+            <AuthGuard>
+              <Hint hints={hintsData} />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/chatlist"
+          element={
+            <AuthGuard>
+              <Chatlist />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/chatroom"
+          element={
+            <AuthGuard>
+              <Chatroom />
+            </AuthGuard>
+          }
+        />
+        {/* その他のルート */}
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/matched-list" element={<MatchedList />} />
         <Route path="/bm-profile" element={<BMProfile />} />
@@ -50,10 +109,13 @@ function App() {
   );
 }
 
+
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <UserProvider>
+      <Router>
+        <App />
+      </Router>
+    </UserProvider>
   </React.StrictMode>
 );

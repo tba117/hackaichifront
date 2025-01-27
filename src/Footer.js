@@ -15,6 +15,10 @@ function Footer() {
         <i className="fas fa-edit"></i> {/* 感想入力：ペンアイコン */}
       </Link>
 
+      <Link to="/chatlist" className="footer-item">
+        <i className="fas fa-solid fa-comment"></i> {/* ハートアイコンを握手アイコンに変更 */}
+      </Link>
+
       {/* 友達一覧画面 */}
       <Link to="/matched-list" className="footer-item">
         <i className="fas fa-users"></i> {/* 友達一覧：ユーザーアイコン */}

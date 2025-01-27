@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './MatchedProfile.scss';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // axiosをインポート
-import Footer from './Footer'; // フッターをインポート
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // スピナーアイコン
 
 function MatchedProfile() {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ function MatchedProfile() {
     discord: '',
     hobbies: [],
     skills: [],
+    chatRoomId: null,
   });
   
   const [loading, setLoading] = useState(true); // ロード状態の管理
@@ -32,12 +34,15 @@ function MatchedProfile() {
         });
 
         const userData = response.data.matched_user;
+        const chatRoomId = response.data.chat_room; // チャットルームIDを取得
+        console.log(response.data)
         setMatchedUser({
           name: userData.username,
           department: userData.department,
           discord: userData.snsid, // Discord情報が `snsid` に格納されていると仮定
           hobbies: userData.hobbys,
           skills: userData.skils,
+          chatRoomId: chatRoomId,
         });
 
         // マッチングした相手の情報をローカルストレージに保存
@@ -59,11 +64,19 @@ function MatchedProfile() {
     navigate('/hint');
   };
 
+  if (loading) {
+    return (
+      <div className="matched-profile-container">
+        <FontAwesomeIcon icon={faSpinner} spin size="3x" /> {/* 回転するスピナー */}
+        <p>ロード中...</p>
+      </div>
+    ); // ローディング画面
+  }
+
   return (
     <div className="matched-profile-container">
       <h1 className="title">your BizMate</h1>
 
-      {loading && <p>ロード中...</p>}
       {error && <p className="error-message">{error}</p>}
 
       {!loading && !error && (
@@ -100,8 +113,6 @@ function MatchedProfile() {
           </div>
         </>
       )}
-
-      <Footer /> {/* フッターを追加 */}
     </div>
   );
 }

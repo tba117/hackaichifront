@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './Hint.scss';
-import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -104,8 +103,6 @@ function Hint() {
       <button className="hint-page__button" onClick={goToFeedback}>
         相手の印象を記録する
       </button>
-
-      <Footer />
     </div>
   );
 }
