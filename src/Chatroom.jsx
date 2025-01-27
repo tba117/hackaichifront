@@ -54,7 +54,7 @@ function Chatroom() {
 
   // WebSocketの初期化
   useEffect(() => {
-    const websocket = new WebSocket(`ws://aichihack-back-153bffff1dd9.herokuapp.com/ws/chat/${roomName}/`);
+    const websocket = new WebSocket(`wss://aichihack-back-153bffff1dd9.herokuapp.com/ws/chat/${roomName}/`);
     websocketRef.current = websocket;
 
     websocket.onmessage = (event) => {
