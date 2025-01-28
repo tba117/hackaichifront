@@ -118,12 +118,12 @@ function Chatroom() {
       <div className="chatroom-window" ref={chatWindowRef}>
         {messages.map((msg) => (
           <div key={msg.id} className="chat-message-container">
-            {msg.sender_id === id && ( // センダーが送信者でないなら
+            {msg.sender_id !== id && ( // センダーが送信者でないなら
               <span className="chat-sender-name">{msg.sender_name}</span>
             )}
             <div
               className={`chat-message ${ //
-                msg.sender_id === id ? 'chat-message-received' : 'chat-message-sent'
+                msg.sender_id !== id ? 'chat-message-received' : 'chat-message-sent'
               }`}
             >
               {msg.message}
