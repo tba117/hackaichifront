@@ -36,13 +36,14 @@ function Signup() {
       // 登録成功後、ログインに必要なトークンを取得
       const token = response.data.token;
       const user_id = response.data.user_id;
+      const id = response.data.id; // サーバーから取得したID
 
       // トークンをlocalStorageに保存
       localStorage.setItem('token', token);
       localStorage.setItem('user_id', user_id);
 
       // 登録成功後、プロフィール作成ページに遷移
-      navigate('/profile-setup');
+      navigate('/profile-setup', { state: { id } });
     } catch (error) {
       console.error('エラー:', error.response.data);
       setError('登録に失敗しました。再度お試しください。');

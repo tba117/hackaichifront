@@ -13,6 +13,8 @@ function Chatlist() {
   const [error, setError] = useState(''); // エラーメッセージ
   const navigate = useNavigate();
 
+  console.log('useContext user', user)
+
   // チャットルーム一覧を取得する関数
   const fetchChatRooms = async () => {
     try {

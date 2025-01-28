@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigateをインポート
+import { useNavigate, useLocation } from 'react-router-dom'; // useNavigateをインポート
 import axios from 'axios';
 import './ProfileSetup.scss';
 import { UserContext } from './UserContext'; // UserContext をインポート
 
 function ProfileSetup() {
   const navigate = useNavigate(); // useNavigateフックを使用して遷移機能を取得
+  const location = useLocation();
   const { user, saveUser } = useContext(UserContext); // Context からユーザ情報と保存関数を取得
 
+  const userId = location.state?.id; // Signupから渡されたIDを取得
   const [username, setUsername] = useState(user?.username || "");
   const [department, setDepartment] = useState(user?.department || "");
   const [snsid, setSnsid] = useState(user?.discord || "");
@@ -57,6 +59,7 @@ function ProfileSetup() {
       console.log('プロフィールの更新成功:', response.data);
       // Context にも更新後のデータを保存
       saveUser({
+        id: userId, // Signupから受け取ったIDを保存
         username,
         department,
         discord: snsid,
