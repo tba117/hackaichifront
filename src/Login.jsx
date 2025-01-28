@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // axiosをインポート
 import './Signup.scss'; // スタイルを再利用
 import { UserContext } from './UserContext'; // UserContext をインポート
-import Chatroom from './Chatroom';
 
 function Login() {
   const navigate = useNavigate(); // ページ遷移を管理
@@ -58,8 +57,8 @@ function Login() {
         department: userData.department,
         discord: userData.snsid,
         hobbies: userData.hobbys,
-        skills: userData.skils,
-        selfIntroduction: userData.self_introduction,
+        skills: userData.skills,
+        selfIntroduction: userData.selfIntroduction,
         chatroom: userData.related_chat_rooms,
       });
 

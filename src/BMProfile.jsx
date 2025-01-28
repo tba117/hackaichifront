@@ -91,6 +91,7 @@ function BMProfile() {
       );
 
       const chatRoom = response.data.chat_room;
+      console.log("chatroom:", chatRoom)
       navigate('/chatlist', { state: { chatRoom } }); // 作成されたチャットルーム情報を渡してチャット画面に遷移
     } catch (error) {
       console.error('チャットルームの作成に失敗しました:', error);
