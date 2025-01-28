@@ -105,6 +105,8 @@ function Chatroom() {
     navigate('/chatlist');
   };
 
+  console.log(messages)
+
   return (
     <div className="chatroom-container">
       <div className="chatroom-header">
@@ -114,12 +116,12 @@ function Chatroom() {
       <div className="chatroom-window" ref={chatWindowRef}>
         {messages.map((msg) => (
           <div key={msg.id} className="chat-message-container">
-            {msg.sender_id !== user.id && (
+            {msg.sender_id !== user_id && (
               <span className="chat-sender-name">{msg.sender_name}</span>
             )}
             <div
               className={`chat-message ${
-                msg.sender_id === user.id ? 'chat-message-sent' : 'chat-message-received'
+                msg.sender_id === user_id ? 'chat-message-sent' : 'chat-message-received'
               }`}
             >
               {msg.message}
