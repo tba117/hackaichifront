@@ -71,6 +71,10 @@ function Chatlist() {
   return (
     <div className="matched-list-page">
       <h1 className="matched-list-page__title">Chat List</h1>
+      <p className="matched-list-page_comment">
+          チャットルームはBizMate Listから
+          <br></br>作成できます
+      </p>
       <ul className="matched-list-page__list">
       {chatRooms.map((room, index) => {
           // 自分以外のユーザーを取得

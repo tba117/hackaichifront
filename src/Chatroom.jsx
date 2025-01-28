@@ -116,20 +116,23 @@ function Chatroom() {
         <p className="chatroom-title">{roomTitle}</p>
       </div>
       <div className="chatroom-window" ref={chatWindowRef}>
-        {messages.map((msg) => (
+      {messages.map((msg) => {
+        const isSender = String(msg.sender_id) === String(id);
+        return (
           <div key={msg.id} className="chat-message-container">
-            {msg.sender_id !== id && ( // センダーが送信者でないなら
+            {!isSender && ( // 相手のメッセージの場合のみ名前を表示
               <span className="chat-sender-name">{msg.sender_name}</span>
             )}
             <div
-              className={`chat-message ${ //
-                msg.sender_id !== id ? 'chat-message-received' : 'chat-message-sent'
+              className={`chat-message ${
+                isSender ? 'chat-message-sent' : 'chat-message-received'
               }`}
             >
               {msg.message}
             </div>
           </div>
-        ))}
+        );
+      })}
       </div>
       <div className="chatroom-input-container">
         <input
