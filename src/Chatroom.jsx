@@ -13,7 +13,6 @@ function Chatroom() {
   const websocketRef = useRef(null); // WebSocketの参照
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useContext(UserContext);
 
   const room = location.state?.room;
   const roomId = room?.id;
