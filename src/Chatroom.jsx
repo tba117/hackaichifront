@@ -14,6 +14,8 @@ function Chatroom() {
   const location = useLocation();
   const { user } = useContext(UserContext);
 
+
+
   const room = location.state?.room;
   const roomId = room?.id;
   const roomName = room?.name; // 表示用のルーム名
@@ -59,6 +61,7 @@ function Chatroom() {
 
     websocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      console.log('data_websocket: ', data)
       setMessages((prevMessages) => [
         ...prevMessages,
         {
@@ -101,6 +104,7 @@ function Chatroom() {
     navigate('/chatlist');
   };
 
+  console.log("messages:", messages)
 
   return (
     <div style={styles.container}>
@@ -113,7 +117,7 @@ function Chatroom() {
           <div key={msg.id} style={{ display: 'flex', flexDirection: 'column' }}>
             {/* 名前をメッセージの上に表示 */}
             {msg.sender_id !== user.id && (
-              <span style={styles.senderName}>{msg.sender_name}</span>
+              <span style={styles.senderName}>{roomTitle}</span>
             )}
             <div
               style={{
