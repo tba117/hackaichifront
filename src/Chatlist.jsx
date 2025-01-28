@@ -15,6 +15,8 @@ function Chatlist() {
   const navigate = useNavigate();
   const location = useLocation(); // 現在のURL情報を取得
 
+  const id = localStorage.getItem('id');
+
   console.log('useContext user', user)
 
   // チャットルーム一覧を取得する関数
@@ -72,7 +74,7 @@ function Chatlist() {
       <ul className="matched-list-page__list">
       {chatRooms.map((room, index) => {
           // 自分以外のユーザーを取得
-          const otherUser = room.users.find((u) => u.id !== user.id);
+          const otherUser = room.users.find((u) => u.id !== id);
           console.log('otherUser:', otherUser)
           console.log('useContext user', user)
           return (

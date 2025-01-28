@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 15px;
+  padding: 10px 0px 10px;
   background: linear-gradient(90deg, #a8edea, #fed6e3); /* パステル系のグラデーション */
   position: fixed;
   bottom: 0;
@@ -18,7 +18,7 @@
 
 .footer-item:hover i {
   transform: scale(1.2); /* ホバー時にアイコンを拡大 */
-  color: #666; /* ホバー時に明るめのグレーに変更 */
+  color: #888; /* ホバー時に明るめのグレーに変更 */
 }
 
 .footer-item i {
@@ -30,5 +30,11 @@
 @media (max-width: 768px) {
   .footer-item {
     font-size: 28px; /* アイコンをさらに大きくする */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-item {
+    font-size: 23px; /* アイコンをさらに大きくする */
   }
 }

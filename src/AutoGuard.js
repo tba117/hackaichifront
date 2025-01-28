@@ -3,10 +3,10 @@ import { Navigate } from 'react-router-dom';
 
 const AuthGuard = ({ children }) => {
     const token = localStorage.getItem('token'); // ローカルストレージからトークンを取得
-
-    if (!token) {
+    const id = localStorage.getItem('id');
+    if (!token || !id) {
         // トークンが存在しない場合、ログイン画面にリダイレクト
-        console.log('トークン無')
+        console.log('トークン・id無')
         return <Navigate to="/login" />;
     }
 

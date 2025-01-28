@@ -16,6 +16,11 @@ function Home() {
     }
   }, [user, navigate]);
 
+  // ユーザー情報がない間はローディングや空の状態を表示
+  if (!user) {
+    return null; // またはローディングスピナーを表示
+  }
+
   return (
     <div className="home-page">
       <div className="home-page__header">
