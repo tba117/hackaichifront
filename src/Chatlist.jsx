@@ -5,6 +5,7 @@ import './Chatlist.scss'; // スタイルの読み込み
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // スピナーアイコン
 import { UserContext } from './UserContext'; // UserContext をインポート
+import { useLocation } from 'react-router-dom'; // useLocationをインポート
 
 function Chatlist() {
   const { user } = useContext(UserContext); // UserContext からログインユーザー情報を取得
@@ -12,6 +13,7 @@ function Chatlist() {
   const [loading, setLoading] = useState(true); // ローディング状態
   const [error, setError] = useState(''); // エラーメッセージ
   const navigate = useNavigate();
+  const location = useLocation(); // 現在のURL情報を取得
 
   console.log('useContext user', user)
 
@@ -38,7 +40,7 @@ function Chatlist() {
   // ページロード時にチャットルーム一覧を取得
   useEffect(() => {
     fetchChatRooms();
-  }, []);
+  }, [location]);
 
   const handleRoomClick = (room) => {
     // プロフィールをクリックしたら、BMProfileページに遷移
@@ -73,7 +75,6 @@ function Chatlist() {
           const otherUser = room.users.find((u) => u.id !== user.id);
           console.log('otherUser:', otherUser)
           console.log('useContext user', user)
-          console.log('user.id:', user.id)
           return (
             <li
               key={index}

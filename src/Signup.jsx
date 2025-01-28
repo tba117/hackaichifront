@@ -41,6 +41,7 @@ function Signup() {
       // トークンをlocalStorageに保存
       localStorage.setItem('token', token);
       localStorage.setItem('user_id', user_id);
+      localStorage.setItem('id', id);
 
       // 登録成功後、プロフィール作成ページに遷移
       navigate('/profile-setup', { state: { id } });

@@ -20,6 +20,7 @@ function Chatroom() {
   const roomName = room?.name; // 表示用のルーム名
 
   const user_id = localStorage.getItem('user_id');
+  const id = localStorage.getItem('id');
 
   // チャット相手の username を取得
   const otherUser = room?.users.find((u) => u.user_id !== user_id); // 自分以外のユーザーを特定
@@ -92,7 +93,7 @@ function Chatroom() {
       websocketRef.current.send(
         JSON.stringify({
           message: input,
-          sender_id: user.id,
+          sender_id: id,
         })
       );
       setInput('');
@@ -105,7 +106,8 @@ function Chatroom() {
     navigate('/chatlist');
   };
 
-  console.log(messages)
+  console.log("message", messages[0])
+  console.log("id", id)
 
   return (
     <div className="chatroom-container">
@@ -116,12 +118,12 @@ function Chatroom() {
       <div className="chatroom-window" ref={chatWindowRef}>
         {messages.map((msg) => (
           <div key={msg.id} className="chat-message-container">
-            {msg.sender_id !== user_id && (
+            {msg.sender_id === id && ( // センダーが送信者でないなら
               <span className="chat-sender-name">{msg.sender_name}</span>
             )}
             <div
-              className={`chat-message ${
-                msg.sender_id === user_id ? 'chat-message-sent' : 'chat-message-received'
+              className={`chat-message ${ //
+                msg.sender_id === id ? 'chat-message-received' : 'chat-message-sent'
               }`}
             >
               {msg.message}

@@ -35,10 +35,12 @@ function Login() {
       // レスポンスからアクセストークンとリフレッシュトークンを取得
       const token = response.data.token;
       const user_id = response.data.user_id;
+      const id = response.data.id;
 
       // トークンをlocalStorageに保存
       localStorage.setItem('token', token);
       localStorage.setItem('user_id', user_id);
+      localStorage.setItem('id', id);
 
       // ユーザー情報を取得
       const userResponse = await axios.get(`https://aichihack-back-153bffff1dd9.herokuapp.com/app/users/${user_id}/`, {
