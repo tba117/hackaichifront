@@ -17,7 +17,8 @@ function BMProfile() {
   
   const navigate = useNavigate();
   const location = useLocation();
-  const { user_id } = location.state || {};
+  const { user_id } = location.state || {};  // 相手のuser_id?
+  console.log('user_id', user_id)
 
   // アドバイスを取得する関数
   const fetchAdvice = useCallback(async () => {
@@ -25,7 +26,6 @@ function BMProfile() {
       console.log('アドバイス取得開始');
       setLoading(true);
       const token = localStorage.getItem('token');
-      console.log(user_id)
       const response = await axios.get(
         `https://aichihack-back-153bffff1dd9.herokuapp.com/app/get-advice/${user_id}/`,
         {
