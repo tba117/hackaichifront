@@ -15,14 +15,14 @@ function Chatroom() {
   const location = useLocation();
   const { user } = useContext(UserContext);
 
-
-
   const room = location.state?.room;
   const roomId = room?.id;
   const roomName = room?.name; // 表示用のルーム名
 
+  const user_id = localStorage.getItem('user_id');
+
   // チャット相手の username を取得
-  const otherUser = room?.users.find((u) => u.id !== user.id); // 自分以外のユーザーを特定
+  const otherUser = room?.users.find((u) => u.user_id !== user_id); // 自分以外のユーザーを特定
   const roomTitle = otherUser?.username || 'チャットルーム';
 
   // チャット履歴を取得する関数
@@ -104,8 +104,6 @@ function Chatroom() {
   const handleBack = () => {
     navigate('/chatlist');
   };
-
-  console.log("messages:", messages[0].id)
 
   return (
     <div className="chatroom-container">

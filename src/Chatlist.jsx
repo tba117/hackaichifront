@@ -72,6 +72,7 @@ function Chatlist() {
           // 自分以外のユーザーを取得
           const otherUser = room.users.find((u) => u.id !== user.id);
           console.log('otherUser:', otherUser)
+          console.log('useContext user', user)
           console.log('user.id:', user.id)
           return (
             <li

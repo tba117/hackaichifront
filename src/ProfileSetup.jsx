@@ -67,6 +67,7 @@ function ProfileSetup() {
         skills: selectedSkills,
         selfIntroduction,
       });
+      console.log('id', userId);
       alert('プロフィールが保存されました');
       console.log(user)
       navigate('/deep-questions')
