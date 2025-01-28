@@ -52,7 +52,7 @@ function Chatlist() {
     ); // ローディング画面
   }
 
-  if (error) {
+  if (error || chatRooms.length === 0) {
     return (
       <div className="matched-list-page">
         <p className="matched-list-page_error">

@@ -91,7 +91,7 @@ function BMProfile() {
       );
 
       const chatRoom = response.data.chat_room;
-      navigate('/chatroom', { state: { chatRoom } }); // 作成されたチャットルーム情報を渡してチャット画面に遷移
+      navigate('/chatlist', { state: { chatRoom } }); // 作成されたチャットルーム情報を渡してチャット画面に遷移
     } catch (error) {
       console.error('チャットルームの作成に失敗しました:', error);
       setError('チャットルームの作成に失敗しました。再度お試しください。');
@@ -111,8 +111,8 @@ function BMProfile() {
       <h1 className="bm-profile__title">{username}さんのプロフィール</h1>
       <p className="bm-profile__department">所属: {department}</p>
       <p className="bm-profile__discord">Discord: {discord}</p>
-      <button className="chat-button" onClick={handleButtonClick}>話す</button>
       <p className="bm-profile__self-introduction">自己紹介: {selfIntroduction}</p>
+      <button className="chat-button" onClick={handleButtonClick}>チャット</button>
 
       {/* 趣味を表示 */}
       {hobbies.length > 0 && (
