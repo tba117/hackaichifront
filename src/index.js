@@ -98,13 +98,34 @@ function App() {
             </AuthGuard>
           }
         />
-        {/* その他のルート */}
-        <Route path="/feedback" element={<Feedback />} />
-        <Route path="/matched-list" element={<MatchedList />} />
-        <Route path="/bm-profile" element={<BMProfile />} />
+        <Route
+          path="/feedback"
+          element={
+            <AuthGuard>
+              <Feedback />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/matched-list"
+          element={
+            <AuthGuard>
+              <MatchedList />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/bm-profile"
+          element={
+            <AuthGuard>
+              <BMProfile />
+            </AuthGuard>
+          }
+        />
         <Route path="*" element={<Signup />} />
-      </Routes>
-      {!noFooterRoutes.includes(location.pathname) && <Footer />} {/* フッターを特定のページで非表示 */}
+      </Routes >
+      {!noFooterRoutes.includes(location.pathname) && <Footer />
+      } {/* フッターを特定のページで非表示 */}
     </>
   );
 }
