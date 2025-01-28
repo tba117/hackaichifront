@@ -106,7 +106,7 @@ function Chatroom() {
     navigate('/chatlist');
   };
 
-  console.log("message", messages[0])
+  console.log("message", messages)
   console.log("id", id)
 
   return (

@@ -32,7 +32,7 @@ const hintsData = [
 
 function App() {
   const location = useLocation();
-  const noFooterRoutes = ['/signup', '/login', '/']; // signup と login のページでフッターを非表示にする
+  const noFooterRoutes = ['/signup', '/login', '/', '/chatroom']; // signup と login のページでフッターを非表示にする
 
   return (
     <>
