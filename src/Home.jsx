@@ -4,21 +4,17 @@ import './Home.scss';
 import { UserContext } from './UserContext';
 
 function Home() {
-  const { user, saveUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
-  // ユーザー情報がContextにない場合、localStorageから再取得
+  console.log(user)
+
+  // ユーザー情報がContextにない場合、ログイン画面にリダイレクト
   useEffect(() => {
     if (!user) {
-      const storedUser = localStorage.getItem('user');
-      if (storedUser) {
-        saveUser(JSON.parse(storedUser)); // Contextに保存
-      } else {
-        // ユーザー情報がない場合はログイン画面にリダイレクト
-        navigate('/login');
-      }
+      navigate('/login'); // ユーザー情報がない場合はログイン画面にリダイレクト
     }
-  }, [user, saveUser, navigate]);
+  }, [user, navigate]);
 
   return (
     <div className="home-page">
@@ -34,8 +30,8 @@ function Home() {
           <p><strong>所属部署:</strong> {user.department}</p>
           <p><strong>Discord:</strong> {user.discord}</p>
           <p><strong>趣味:</strong> {Array.isArray(user.hobbies) ? user.hobbies.join(', ') : '未設定'}</p>
-          <p><strong>スキル:</strong> {Array.isArray(user.skils) ? user.skils.join(', ') : '未設定'}</p>
-          <p><strong>自己紹介:</strong> {user.self_introduction || '未設定'}</p>
+          <p><strong>スキル:</strong> {Array.isArray(user.skills) ? user.skills.join(', ') : '未設定'}</p>
+          <p><strong>自己紹介:</strong> {user.selfIntroduction || '未設定'}</p>
         </div>
       </div>
 
