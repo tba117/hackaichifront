@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { UserContext } from './UserContext';
+import './Chatroom.scss';
 
 function Chatroom() {
   const [messages, setMessages] = useState([]); // メッセージのステート
@@ -104,117 +105,44 @@ function Chatroom() {
     navigate('/chatlist');
   };
 
-  console.log("messages:", messages)
+  console.log("messages:", messages[0].id)
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <FontAwesomeIcon icon={faArrowLeft} onClick={handleBack} />
-        <p style={styles.chattitle}>{roomTitle}</p>
+    <div className="chatroom-container">
+      <div className="chatroom-header">
+        <FontAwesomeIcon icon={faArrowLeft} onClick={handleBack} className="back-icon" />
+        <p className="chatroom-title">{roomTitle}</p>
       </div>
-      <div style={styles.chatWindow} ref={chatWindowRef}>
+      <div className="chatroom-window" ref={chatWindowRef}>
         {messages.map((msg) => (
-          <div key={msg.id} style={{ display: 'flex', flexDirection: 'column' }}>
-            {/* 名前をメッセージの上に表示 */}
+          <div key={msg.id} className="chat-message-container">
             {msg.sender_id !== user.id && (
-              <span style={styles.senderName}>{roomTitle}</span>
+              <span className="chat-sender-name">{msg.sender_name}</span>
             )}
             <div
-              style={{
-                ...styles.message,
-                alignSelf: msg.sender_id === user.id ? 'flex-end' : 'flex-start',
-                backgroundColor: msg.sender_id === user.id ? '#00aced' : '#fff',
-                color: msg.sender_id === user.id ? '#fff' : '#000',
-              }}
+              className={`chat-message ${
+                msg.sender_id === user.id ? 'chat-message-sent' : 'chat-message-received'
+              }`}
             >
               {msg.message}
             </div>
           </div>
         ))}
       </div>
-      <div style={styles.inputContainer}>
+      <div className="chatroom-input-container">
         <input
-          style={styles.input}
+          className="chat-input"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="メッセージを入力"
         />
-        <button style={styles.sendButton} onClick={handleSend}>
+        <button className="send-button" onClick={handleSend}>
           送信
         </button>
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    height: '92.5vh',
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  header: {
-    backgroundColor: '#00aced',
-    color: 'white',
-    padding: '15px',
-    fontWeight: 'bold',
-    display: 'flex',
-    alignItems: 'center',
-    position: 'relative',
-  },
-  chattitle: {
-    margin: 0,
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 25,
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  },
-  chatWindow: {
-    padding: '10px',
-    backgroundColor: '#f5f5f5',
-    overflowY: 'scroll',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-  },
-  senderName: {
-    fontSize: '12px',
-    color: '#555',
-    marginBottom: '5px',
-    alignSelf: 'flex-start',
-  },
-  message: {
-    padding: '10px',
-    borderRadius: '10px',
-    maxWidth: '70%',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-  },
-  inputContainer: {
-    display: 'flex',
-    padding: '10px',
-    borderTop: '1px solid #ccc',
-  },
-  input: {
-    flex: 1,
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-  },
-  sendButton: {
-    marginLeft: '10px',
-    padding: '10px',
-    backgroundColor: '#00aced',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  },
-};
 
 export default Chatroom;
